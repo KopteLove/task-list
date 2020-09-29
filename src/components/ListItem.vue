@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li :id="'task' + todo.id" v-for="todo in app" v-bind:key="todo.id">
+        <li :id="'task' + todo.id" v-for="todo in arr" v-bind:key="todo.id">
             <div :id="'taskNum' + todo.id">
                 <span>Task № {{ todo.id }}</span>
             </div>
@@ -20,7 +20,7 @@
 export default {
     name: 'ListItem',
     props: [
-        'app'
+        'arr'
     ],
     methods: {
         doneTask(id) {
@@ -30,11 +30,11 @@ export default {
             document.getElementById('taskNum' + id).classList.toggle('complete-num');
         },
         deleteTask(todo) {
-            this.app.splice(this.app.indexOf(todo), 1);
+            this.arr.splice(this.arr.indexOf(todo), 1);
             this.render();
         },
         render() {
-            this.app.forEach((el, i) => {
+            this.arr.forEach((el, i) => {
                 el.id = i + 1;
             })
         }

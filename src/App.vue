@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <Header/>
-        <AddItem :app="todos"/>
-        <ListItem :app="todos"/>
+        <AddItem :arr="todos"/>
+        <ListItem :arr="todos"/>
         <Footer/>
     </div>
 </template>

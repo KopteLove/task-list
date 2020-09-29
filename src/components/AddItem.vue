@@ -13,7 +13,7 @@
 export default {
     name: 'AddItem',
     props: [
-      'app'
+      'arr'
     ],
     data() {
         return {
@@ -23,16 +23,15 @@ export default {
     methods: {
         addItem() {
             this.newTextTask = this.$refs.inputHeader.value.trim();
-
             if (this.newTextTask.length > 0 && this.newTextTask !== ' ') {
                 let obj = {};
-                obj.id = this.app.length + 1;
+                obj.id = this.arr.length + 1;
                 obj.title = this.$refs.inputHeader.value;
                 obj.text = this.$refs.inputDescription.value;
                 obj.status = true;
                 this.$refs.inputHeader.value = '';
                 this.$refs.inputDescription.value = '';
-                this.app.push(obj);
+                this.arr.push(obj);
             }
         }
     },
