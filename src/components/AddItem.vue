@@ -3,7 +3,7 @@
         <h2>Task Header</h2>
         <input ref="inputHeader" type="text">
         <h2>Task Description</h2>
-        <textarea rows="10" ref="inputDescription"></textarea>
+        <textarea rows="3" ref="inputDescription"></textarea>
         <button @click="addItem">Add Task</button>
     </section>
 </template>
