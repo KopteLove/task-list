@@ -12,5 +12,6 @@ export default {
 footer {
     background-color: cadetblue;
     height: 100px;
+    margin-top: auto;
 }
 </style>

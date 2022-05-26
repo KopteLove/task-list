@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <Header/>
-        <AddItem :arr="todos"/>
-        <ListItem :arr="todos"/>
+        <AddItem :taskArr="taskArr"/>
+        <ListItem :taskArr="taskArr"/>
         <Footer/>
     </div>
 </template>
@@ -23,7 +23,15 @@ export default {
     },
     data() {
         return {
-            todos: [],
+            taskArr: JSON.parse(localStorage.getItem('taskStorage') || "[]"),
+        }
+    },
+    watch: {
+        taskArr: {
+            handler: function(taskArr) {
+                localStorage.setItem('taskStorage', JSON.stringify(taskArr))
+            },
+            deep: true
         }
     }
 }
@@ -32,6 +40,10 @@ export default {
 <style>
 * {
     box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
 }
 
 body {
@@ -45,5 +57,14 @@ body {
     text-align: center;
     color: #2c3e50;
     background-color: #b2ccc7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 8px;
+    }
 }
 </style>

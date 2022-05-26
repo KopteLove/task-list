@@ -13,7 +13,7 @@
 export default {
     name: 'AddItem',
     props: [
-      'arr'
+      'taskArr'
     ],
     data() {
         return {
@@ -22,16 +22,24 @@ export default {
     },
     methods: {
         addItem() {
+            let numTask = 0;
+            if (this.taskArr.length > 0) {
+                this.taskArr.forEach(function(item) {
+                    numTask = numTask > item.id ? numTask : item.id;
+                });
+            }
+
             this.newTextTask = this.$refs.inputHeader.value.trim();
             if (this.newTextTask.length > 0 && this.newTextTask !== ' ') {
                 let obj = {};
-                obj.id = this.arr.length + 1;
+                obj.id = numTask + 1;
                 obj.title = this.$refs.inputHeader.value;
                 obj.text = this.$refs.inputDescription.value;
-                obj.status = true;
+                obj.open = false;
+                obj.done = false;
                 this.$refs.inputHeader.value = '';
                 this.$refs.inputDescription.value = '';
-                this.arr.push(obj);
+                this.taskArr.unshift(obj);
             }
         }
     },
@@ -40,7 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-    padding: 0 20px 20px 20px;
+    padding: 0 16px 16px 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,13 +56,13 @@ section {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 2.1rem;
 }
 
 input {
     width: 50%;
     height: 50px;
-    font-size: 30px;
+    font-size: 2.1rem;
     border-radius: 10px;
     border: 1px solid #657d75;
     outline: none;
@@ -73,7 +81,7 @@ textarea {
     border: 1px solid #657d75;
     outline: none;
     color: #5f9ea0;
-    font-size: 25px;
+    font-size: 1.8rem;
     padding: 5px 10px;
 
     &:focus {
@@ -84,7 +92,7 @@ textarea {
 }
 
 button {
-    height: 50px;
+    height: 53px;
     margin-top: 20px;
     border-radius: 5px;
     position: relative;
@@ -95,12 +103,11 @@ button {
     color: #ffffff;
     font-weight: bold;
     padding: 0 100px 0 50px;
-    font-size: 25px;
-    line-height: 52px;
+    font-size: 1.8rem;
 
     &:hover {
-        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.6);
-        text-shadow: 0 0 5px #ffffff;
+        box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.6);
+        text-shadow: 0 0 2px #ffffff;
     }
 
     &:focus {
@@ -111,20 +118,39 @@ button {
     &::before {
         content: '';
         position: absolute;
-        top: 22px;
-        right: 6px;
+        top: 50%;
+        right: 11px;
         width: 32px;
         height: 6px;
         background-color: #FFFFFF;
+        transform: translateY(-50%);
     }
 
     &::before {
-        transform: rotate(90deg);
+        transform: translateY(-50%) rotate(90deg);
     }
 
     &:hover::before,
     &:hover::after {
-        box-shadow: 0 0 2px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0 0 2px 0 rgba(255, 255, 255, 1);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    textarea,
+    input {
+        width: 100%;
+    }
+
+    button {
+        height: 30px;
+        padding: 0 50px 0 20px;
+
+        &::after,
+        &::before {
+            width: 16px;
+            height: 4px;
+        }
     }
 }
 </style>

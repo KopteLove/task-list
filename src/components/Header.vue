@@ -19,6 +19,6 @@ header {
 
 h1 {
     margin: 0;
-    font-size: 50px;
+    font-size: 3.6rem;
 }
 </style>
