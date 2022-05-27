@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Detailed project
+
+[Task-list](https://koptelove.github.io/task-list/)
