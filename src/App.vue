@@ -11,7 +11,7 @@
 import Header from './components/Header.vue'
 import ListItem from './components/ListItem.vue'
 import AddItem from './components/AddItem.vue'
-import Footer from "@/components/Footer";
+import Footer from "./components/Footer";
 
 export default {
     name: 'App',
