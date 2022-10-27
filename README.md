@@ -10,7 +10,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiles for production
 ```
 npm run build
 ```
@@ -23,6 +23,6 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Detailed project
+### Page project
 
 [Task-list](https://koptelove.github.io/task-list/)
