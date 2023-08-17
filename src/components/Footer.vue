@@ -3,15 +3,15 @@
 </template>
 
 <script>
-export default {
-    name: 'Footer'
-}
+    export default {
+        name: 'Footer'
+    }
 </script>
 
 <style lang="scss">
-footer {
-    background-color: cadetblue;
-    height: 100px;
-    margin-top: auto;
-}
+    footer {
+        background-color: cadetblue;
+        height: 100px;
+        margin-top: auto;
+    }
 </style>
